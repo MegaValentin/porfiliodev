@@ -1,0 +1,39 @@
+---
+    import ExperienceItem from './ExperienceItem.astro'
+
+    const experiencie = [
+    {
+        date:'2023',
+        title:'DESARROLLO WEB - CONSULTOR TECNICO',
+        company:'IDEEAS - AvaSaaS Consulting',
+        description:'Desarrollo de aplicaciones web. Desarrollo de integraciones con la herramienta Oracle Applications Cloud.',
+        link:''
+    },
+    {
+        date:'2021-Actualidad',
+        title:'DIRECCION DE INFORMATICA',
+        company:'Municipalidad de Bolvar',
+        description:'Desarrollo de aplicaciones web. Resolucion de problemas en el sector IT para la administracion municipal',
+        link:''
+    },
+    {
+        date: '2020 - 2022',
+        title:'OPERADOR DE RADIO',
+        company:'FM La Portada 95.5',
+        description:'Creación y edición de contenido.',
+        link:''
+    }
+]
+---
+
+<ol class="relative border-s border-gray-200 ml-2">
+    {
+        experiencie.map(experiencie => (
+        
+        <li class="mb-10 ms-4">
+            <ExperienceItem {...experiencie} />
+        </li>
+        ))
+    }
+  
+</ol>

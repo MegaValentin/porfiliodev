@@ -1,0 +1,75 @@
+---
+import SocialPill from "./socialPill.astro";
+import GithubIcon from "../icons/Github.astro";
+import HtmlIcon from "../icons/HtmlIcon.astro";
+import TailwindIcon from "../icons/Tailwind.astro";
+import JavaScriptsIcon from "../icons/JavaScript.astro";
+import NodeJSIcon from "../icons/NodeJS.astro";
+import MongoIcon from "../icons/Mongo.astro";
+const TAGS = {
+  HTML: {
+    name: "HTML",
+    icon: HtmlIcon,
+  },
+  Tailwind: {
+    name: "Tailwind CSS",
+    icon: TailwindIcon,
+  },
+  JavaScript: {
+    name: "JavaScript",
+    icon: JavaScriptsIcon,
+  },
+  NodeJS: {
+    name: "NodeJS",
+    icon: NodeJSIcon,
+  },
+  MongoDB: {
+    name: "MongoDB",
+    icon: MongoIcon,
+  },
+};
+
+const PROJECTS = [
+  {
+    title: "Birthday Calendar",
+    description:
+      "Aplicación diseñada para gestionar y recordar los cumpleaños de los empleados para la gestion que fue desarrollada.",
+    gitHub: "https://github.com/MegaValentin/birthday-calendar",
+    image: "../../public/projectsImg/Project1.webp",
+    tags: [TAGS.JavaScript, TAGS.Tailwind, TAGS.NodeJS, TAGS.MongoDB],
+  },
+];
+---
+
+{
+  PROJECTS.map(({ title, description, gitHub, image, tags }) => (
+    <article class="mb-16">
+      <h3 class="text-2xl font-semibold text-yellow-500/60 mb-3">{title} </h3>
+      <p class="text-lg mb-5 text-pretty">{description}</p>
+      <a
+        target="_blank"
+        rel="noopener"
+        href={gitHub}
+        class="flex gap-x-3 rounded-full text-lg py-1 px-2 justify-center items-center bg-gray-500 hover:bg-white text-white hover:text-black hover:border border-black"
+      >
+        <GithubIcon class="size-3 lg:size-6" /> Repositorio
+      </a>
+      <ul class="flex gap-x-4 flex-row mt-4 mb-2">
+        {tags.map((tag) => (
+          <li>
+            <span class="flex gap-x-2 rounded-full text-xs py-1 px-2 justify-center items-center">
+              <tag.icon class="size-4 lg:size-5" />
+              {tag.name}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <img
+        class="rounded shadow-2xl shadow-black/10 mb-4"
+        src={image}
+        alt={`Captura de pantalla del proyecto ${title}`}
+      />
+      
+    </article>
+  ))
+}
